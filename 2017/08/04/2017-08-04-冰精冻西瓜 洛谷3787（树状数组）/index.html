@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>冰精冻西瓜 | BLUE_M</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目琪露诺是拥有操纵冷气程度的能力的妖精，一天她发现了一片西瓜地。这里有n个西瓜，由n-1条西瓜蔓连接，形成一个有根树，琪露诺想要把它们冷冻起来慢慢吃。">
+<meta name="keywords" content="树状数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="冰精冻西瓜">
+<meta property="og:url" content="https://13091291791msy.github.io/2017/08/04/2017-08-04-冰精冻西瓜 洛谷3787（树状数组）/index.html">
+<meta property="og:site_name" content="BLUE_M">
+<meta property="og:description" content="题目琪露诺是拥有操纵冷气程度的能力的妖精，一天她发现了一片西瓜地。这里有n个西瓜，由n-1条西瓜蔓连接，形成一个有根树，琪露诺想要把它们冷冻起来慢慢吃。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-14T05:57:40.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="冰精冻西瓜">
+<meta name="twitter:description" content="题目琪露诺是拥有操纵冷气程度的能力的妖精，一天她发现了一片西瓜地。这里有n个西瓜，由n-1条西瓜蔓连接，形成一个有根树，琪露诺想要把它们冷冻起来慢慢吃。">
+  
+    <link rel="alternate" href="/atom.xml" title="BLUE_M" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/pic/06.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-2017-08-04-冰精冻西瓜 洛谷3787（树状数组）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/04/2017-08-04-冰精冻西瓜 洛谷3787（树状数组）/" class="article-date">
+  <time class="post-time" datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">04</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      冰精冻西瓜
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>琪露诺是拥有操纵冷气程度的能力的妖精，一天她发现了一片西瓜地。这里有n个西瓜，由n-1条西瓜蔓连接，形成一个有根树，琪露诺想要把它们冷冻起来慢慢吃。<br><a id="more"></a></p>
+<p>这些西瓜蔓具有神奇的性质，可以将经过它的冷气的寒冷程度放大或缩小，每条西瓜蔓放大/缩小冷气寒冷程度的能力值为Wi，表示冷气经过它后，寒冷程度值x会变为x*wi。每个西瓜也有一个寒冷程度值，炎热的夏日，所有西瓜的寒冷程度值初始都为0。</p>
+<p>琪露诺会做出两种动作:</p>
+<p>①.对着西瓜i放出寒冷程度为x的冷气。这股冷气顺着西瓜蔓向“西瓜树”的叶子节点蔓延，冷气的寒冷程度会按照上面的规则变化。遇到一个西瓜连了多条西瓜蔓时，每条叶子节点方向的西瓜蔓均会获得与原先寒冷程度相等的冷气。途径的所有西瓜的寒冷程度值都会加上冷气的寒冷程度值。</p>
+<p>⑨.向你询问西瓜i的寒冷程度值是多少。</p>
+<p>等等，为什么会有⑨？因为笨蛋琪露诺自己也会忘记放了多少冰呢。</p>
+<p>所以，帮她计算的任务就这么交给你啦。</p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>第一行一个整数n,表示西瓜的数量。</p>
+<p>西瓜编号为1~n，1为这棵“西瓜树”的根。</p>
+<p>接下来n-1行，每行有两个整数u,v和一个实数w，表示西瓜u和西瓜v之间连接有一条藤蔓，它放大/缩小冷气寒冷程度的能力值为w。</p>
+<p>接下来一行一个整数m，表示操作的数量。</p>
+<p>接下来m行，每行两个或三个整数。</p>
+<p>第一个数只能是1或9。</p>
+<p>如果为1，接下来一个整数i和一个实数x，表示对西瓜i放出寒冷程度为x的冷气。</p>
+<p>如果为9，接下来一个整数i，表示询问编号为i的西瓜的寒冷程度值。</p>
+<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>对于每个操作⑨，输出一行一个实数，表示对应西瓜的寒冷程度值。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h2><p>4</p>
+<p>1 2 1.00000000</p>
+<p>2 3 0.00000000</p>
+<p>3 4 1.00000101</p>
+<p>9</p>
+<p>1 1 3.00000000</p>
+<p>9 2</p>
+<p>9 3</p>
+<p>1 2 1.42856031</p>
+<p>9 4</p>
+<p>9 2</p>
+<p>1 3 4.23333333</p>
+<p>9 2</p>
+<p>9 4</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h2><p>3.00000000</p>
+<p>0.00000000</p>
+<p>0.00000000</p>
+<p>4.42856031</p>
+<p>4.42856031</p>
+<p>4.23333761</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>如果将树变成链 然后对链进行操作</p>
+<p>对于一条链如果说要进行区间修改以及单点查询 很显然可以利用差分+树状数组搞定</p>
+<p>关键在于如何将树弄成一条链</p>
+<p>对于一条如果边权为0 可以直接将这条边砍掉 我们再对每一个根节点进行dfs序 同时记录以当前节点为根的子树在链中的左端点和右端点记录下来 以及从根节点到当前节点的w累乘</p>
+<p>如果并不是在根节点放冷气那么可以将 释放的冷气/当前节点的w值  然后在从当前节点开始释放即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> M N*3</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Max</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;<span class="keyword">return</span> x &gt;= y ? x : y;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Min</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;<span class="keyword">return</span> x &lt;= y ? x : y;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;<span class="keyword">return</span> x &amp; (-x);&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> to, Next;<span class="keyword">double</span> value;</div><div class="line">&#125;G[M];</div><div class="line"><span class="keyword">int</span> n, m, tot, h[N], root[N], cnt[N], Time;</div><div class="line"><span class="keyword">int</span> l[N], r[N];</div><div class="line"><span class="keyword">double</span> Q[M], W[N];</div><div class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">double</span> w)</span> </span>&#123;tot ++; G[tot].to = v; G[tot].value = w; G[tot].Next = h[u]; h[u] = tot;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">double</span> t)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	W[x] = t;</div><div class="line">	cnt[x] = ++ Time;</div><div class="line">	l[x] = Time;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=h[x]; i; i=G[i].Next)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> v = G[i].to;</div><div class="line">		<span class="keyword">if</span> (!cnt[v] &amp;&amp; !G[i].value) &#123;q.push(v); root[v] = <span class="number">1</span>; <span class="keyword">continue</span>;&#125;</div><div class="line">		<span class="keyword">if</span> (!cnt[v])</div><div class="line">		&#123;</div><div class="line">			dfs(v, t * G[i].value);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	r[x] = Time;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">double</span> t)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">while</span>(x &lt;= n)</div><div class="line">	&#123;</div><div class="line">		Q[x] += t;</div><div class="line">		x += lowbit(x);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">double</span> ret = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(x)</div><div class="line">	&#123;</div><div class="line">		ret += Q[x];</div><div class="line">		x -= lowbit(x);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> u, v;<span class="keyword">double</span> w;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%lf"</span>, &amp;u, &amp;v, &amp;w);</div><div class="line">		add(u, v, w);add(v, u, w);</div><div class="line">	&#125;</div><div class="line">	root[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">	q.push(<span class="number">1</span>);</div><div class="line">	<span class="keyword">while</span>(!q.empty())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> k = q.front(); q.pop();</div><div class="line">		dfs(k, <span class="number">1.0</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> A;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;A);</div><div class="line">		<span class="keyword">if</span> (A == <span class="number">1</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> x; <span class="keyword">double</span> y;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%lf"</span>, &amp;x, &amp;y);</div><div class="line">			y /= W[x];</div><div class="line">			add(l[x], y);</div><div class="line">			add(r[x]+<span class="number">1</span>, -y);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> x;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%.8lf\n"</span>, query(cnt[x]) * W[x]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/08/04/2017-08-04-冰精冻西瓜 洛谷3787（树状数组）/" data-id="cj85a27mx000a287zu6bt7qbc" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树状数组/">树状数组</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/04/2017-08-04-运输计划 洛谷2680 （倍增lca+二分）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          运输计划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/04/2017-08-04-最优贸易 洛谷1073 （bfs）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">最优贸易</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">BLUE_M</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/13091291791msy" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://leanote.com/note/59c7a740d7efaa00cb000001" target="_blank" title="蚂蚁笔记">
+          蚂蚁笔记
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://dedsecr.github.io/" target="_blank" title="SXY">
+          SXY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://youngscc.github.io/" target="_blank" title="YY">
+          YY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://sssSSSay.github.io/" target="_blank" title="sSay">
+          sSay
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://olers.github.io/" target="_blank" title="学姐">
+          学姐
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.leanote.com/winee" target="_blank" title="司机">
+          司机
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://mlovtry.github.io/" target="_blank" title="白学家">
+          白学家
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.csdn.net/pretend_fal" target="_blank" title="沛沛">
+          沛沛
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2016 - 2017 Msy<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/person" title="" class="menuItem">日记</a>
+          
+            <a href="/knowledge" title="" class="menuItem">新知识</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

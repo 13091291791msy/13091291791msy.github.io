@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>选学霸 | BLUE_M</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目老师想从N名学生中选M人当学霸，但有K对人实力相当，如果实力相当的人中，一部分被选上，另一部分没有，同学们就会抗议。所以老师想请你帮他求出他该选多少学霸，才能既不让同学们抗议，又与原来的M尽可能接近">
+<meta name="keywords" content="并查集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="选学霸">
+<meta property="og:url" content="https://13091291791msy.github.io/2017/08/01/2017-08-01-选学霸 洛谷2170（并查集）/index.html">
+<meta property="og:site_name" content="BLUE_M">
+<meta property="og:description" content="题目老师想从N名学生中选M人当学霸，但有K对人实力相当，如果实力相当的人中，一部分被选上，另一部分没有，同学们就会抗议。所以老师想请你帮他求出他该选多少学霸，才能既不让同学们抗议，又与原来的M尽可能接近">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-14T05:57:38.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="选学霸">
+<meta name="twitter:description" content="题目老师想从N名学生中选M人当学霸，但有K对人实力相当，如果实力相当的人中，一部分被选上，另一部分没有，同学们就会抗议。所以老师想请你帮他求出他该选多少学霸，才能既不让同学们抗议，又与原来的M尽可能接近">
+  
+    <link rel="alternate" href="/atom.xml" title="BLUE_M" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/pic/06.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-2017-08-01-选学霸 洛谷2170（并查集）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/01/2017-08-01-选学霸 洛谷2170（并查集）/" class="article-date">
+  <time class="post-time" datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">01</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      选学霸
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>老师想从N名学生中选M人当学霸，但有K对人实力相当，如果实力相当的人中，一部分被选上，另一部分没有，同学们就会抗议。所以老师想请你帮他求出他该选多少学霸，才能既不让同学们抗议，又与原来的M尽可能接近<br><a id="more"></a></p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行，三个正整数N，M，K。</p>
+<p>第2…K行,每行2个数，表示一对实力相当的人的编号(编号为1…N)</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>一行，表示既不让同学们抗议，又与原来的M尽可能接近的选出学霸的数目。(如果有两种方案与M的差的绝对值相等，选较小的一种:)</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h2><p>4 3 2<br>1 2<br>3 4</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h2><p>2</p>
+<h1 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h1><p>100% N&lt;=20000</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>用并查集维护每个集合的元素个数</p>
+<p>如果两个人实力相当则合并集合 同时更新集合内的个数</p>
+<p>利用dp来判断选i个人是否可行 dp[i]表示选择i个人是否可行</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20005 * 2</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n, m, k, f[N];</div><div class="line"><span class="keyword">int</span> size[N];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> f[x] &lt; <span class="number">0</span> ? x : f[x] = find(f[x]);&#125;</div><div class="line"><span class="keyword">int</span> v[N], num;</div><div class="line"><span class="keyword">bool</span> dp[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) f[i] = <span class="number">-1</span>, size[i] = <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=k; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> a, b;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</div><div class="line">		<span class="keyword">int</span> aa = find(a), bb = find(b);</div><div class="line">		<span class="keyword">if</span> (aa == bb) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span> (-f[aa] &gt; -f[bb])</div><div class="line">		&#123;</div><div class="line">			f[aa] += f[bb];</div><div class="line">			f[bb] = aa;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			f[bb] += f[aa];</div><div class="line">			f[aa] = bb;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (f[i] &lt; <span class="number">0</span>) v[++ num] = -f[i];</div><div class="line">	&#125;</div><div class="line">	dp[<span class="number">0</span>] = <span class="number">1</span>; <span class="keyword">int</span> tot = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=num; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=n; j&gt;=v[i]; j--)</div><div class="line">			<span class="keyword">if</span> (dp[j-v[i]]) dp[j] = <span class="number">1</span>;</div><div class="line">		tot += v[i];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;;i++)</div><div class="line">		<span class="keyword">if</span>(dp[m-i])&#123;<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,m-i);<span class="keyword">break</span>;&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(dp[m+i])&#123;<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,m+i);<span class="keyword">break</span>;&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/08/01/2017-08-01-选学霸 洛谷2170（并查集）/" data-id="cj85a27mn0004287ziunmfeg3" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并查集/">并查集</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/04/2017-08-04-秘密代码 洛谷3102（dp）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          秘密代码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">任务安排</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">BLUE_M</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/13091291791msy" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://leanote.com/note/59c7a740d7efaa00cb000001" target="_blank" title="蚂蚁笔记">
+          蚂蚁笔记
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://dedsecr.github.io/" target="_blank" title="SXY">
+          SXY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://youngscc.github.io/" target="_blank" title="YY">
+          YY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://sssSSSay.github.io/" target="_blank" title="sSay">
+          sSay
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://olers.github.io/" target="_blank" title="学姐">
+          学姐
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.leanote.com/winee" target="_blank" title="司机">
+          司机
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://mlovtry.github.io/" target="_blank" title="白学家">
+          白学家
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.csdn.net/pretend_fal" target="_blank" title="沛沛">
+          沛沛
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2016 - 2017 Msy<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/person" title="" class="menuItem">日记</a>
+          
+            <a href="/knowledge" title="" class="menuItem">新知识</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

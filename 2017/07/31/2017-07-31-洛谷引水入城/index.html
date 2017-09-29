@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>引水入城 | BLUE_M</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目在一个遥远的国度，一侧是风景秀美的湖泊，另一侧则是漫无边际的沙漠。该国的行政区划十分特殊，刚好构成一个N 行M 列的矩形，如上图所示，其中每个格子都代表一座城市，每座城市都有一个海拔高度">
+<meta name="keywords" content="搜索，DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="引水入城">
+<meta property="og:url" content="https://13091291791msy.github.io/2017/07/31/2017-07-31-洛谷引水入城/index.html">
+<meta property="og:site_name" content="BLUE_M">
+<meta property="og:description" content="题目在一个遥远的国度，一侧是风景秀美的湖泊，另一侧则是漫无边际的沙漠。该国的行政区划十分特殊，刚好构成一个N 行M 列的矩形，如上图所示，其中每个格子都代表一座城市，每座城市都有一个海拔高度">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-22T08:45:00.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="引水入城">
+<meta name="twitter:description" content="题目在一个遥远的国度，一侧是风景秀美的湖泊，另一侧则是漫无边际的沙漠。该国的行政区划十分特殊，刚好构成一个N 行M 列的矩形，如上图所示，其中每个格子都代表一座城市，每座城市都有一个海拔高度">
+  
+    <link rel="alternate" href="/atom.xml" title="BLUE_M" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/pic/06.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-2017-07-31-洛谷引水入城" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/31/2017-07-31-洛谷引水入城/" class="article-date">
+  <time class="post-time" datetime="2017-07-30T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">7月</span><br/>
+    <span class="post-day">31</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      引水入城
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>在一个遥远的国度，一侧是风景秀美的湖泊，另一侧则是漫无边际的沙漠。该国的行政区划十分特殊，刚好构成一个N 行M 列的矩形，如上图所示，其中每个格子都代表一座城市，每座城市都有一个海拔高度<br><a id="more"></a><br>为了使居民们都尽可能饮用到清澈的湖水，现在要在某些城市建造水利设施。水利设施有两种，分别为蓄水厂和输水站。蓄水厂的功能是利用水泵将湖泊中的水抽取到所在城市的蓄水池中。</p>
+<p>因此，只有与湖泊毗邻的第1 行的城市可以建造蓄水厂。而输水站的功能则是通过输水管线利用高度落差，将湖水从高处向低处输送。故一座城市能建造输水站的前提，是存在比它海拔更高且拥有公共边的相邻城市，已经建有水利设施。由于第N 行的城市靠近沙漠，是该国的干旱区，所以要求其中的每座城市都建有水利设施。那么，这个要求能否满足呢？如果能，请计算最少建造几个蓄水厂；如果不能，求干旱区中不可能建有水利设施的城市数目。</p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入文件的每行中两个数之间用一个空格隔开。输入的第一行是两个正整数N 和M，表示矩形的规模。接下来N 行，每行M 个正整数，依次代表每座城市的海拔高度。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出有两行。如果能满足要求，输出的第一行是整数1，第二行是一个整数，代表最少建造几个蓄水厂；如果不能满足要求，输出的第一行是整数0，第二行是一个整数，代表有几座干旱区中的城市不可能建有水利设施。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h2><p>2 5<br>9 1 5 4 3<br>8 7 6 1 2</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h2><p>1<br>1</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>深搜判断是否有解</p>
+<p>将第一行都建上蓄水厂然后进行深搜判断最后一行是否都可以遍历到（宽搜也可做）</p>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>通过对每一个都建一次蓄水厂得到l[i], r[i]; 表示如果在i这个点建蓄水厂的话可以是最后一行的l[i]~r[i]都能够得到水</p>
+<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><p>进行dp将问题转化为区间覆盖问题选择最少的区间使其覆盖整个区间</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n, m, h[<span class="number">505</span>][<span class="number">505</span>];</div><div class="line"><span class="keyword">int</span> vis[<span class="number">505</span>][<span class="number">505</span>];</div><div class="line"><span class="keyword">int</span> r[<span class="number">505</span>], l[<span class="number">505</span>];</div><div class="line"><span class="keyword">int</span> dp[<span class="number">505</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">if</span> (vis[x][y]) <span class="keyword">return</span> ;</div><div class="line">	vis[x][y] = <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (x + <span class="number">1</span> &lt;= n &amp;&amp; h[x][y] &gt; h[x + <span class="number">1</span>][y]) dfs(x + <span class="number">1</span>, y);</div><div class="line">	<span class="keyword">if</span> (x - <span class="number">1</span> &gt;= <span class="number">1</span> &amp;&amp; h[x][y] &gt; h[x - <span class="number">1</span>][y]) dfs(x - <span class="number">1</span>, y);</div><div class="line">	<span class="keyword">if</span> (y + <span class="number">1</span> &lt;= m &amp;&amp; h[x][y] &gt; h[x][y + <span class="number">1</span>]) dfs(x, y + <span class="number">1</span>);</div><div class="line">	<span class="keyword">if</span> (y - <span class="number">1</span> &gt;= <span class="number">1</span> &amp;&amp; h[x][y] &gt; h[x][y - <span class="number">1</span>]) dfs(x, y - <span class="number">1</span>);</div><div class="line">	<span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> Time)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">if</span> (vis[x][y]) <span class="keyword">return</span> ;</div><div class="line">	<span class="keyword">if</span> (x == <span class="number">1</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (Time == <span class="number">1</span>) r[y] = k;</div><div class="line">		<span class="keyword">if</span> (Time == <span class="number">2</span>) l[y] = k;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (x + <span class="number">1</span> &lt;= n &amp;&amp; h[x][y] &lt; h[x + <span class="number">1</span>][y]) dfs1(k, x + <span class="number">1</span>, y, Time);</div><div class="line">	<span class="keyword">if</span> (x - <span class="number">1</span> &gt;= <span class="number">1</span> &amp;&amp; h[x][y] &lt; h[x - <span class="number">1</span>][y]) dfs1(k, x - <span class="number">1</span>, y, Time);</div><div class="line">	<span class="keyword">if</span> (y + <span class="number">1</span> &lt;= m &amp;&amp; h[x][y] &lt; h[x][y + <span class="number">1</span>]) dfs1(k, x, y + <span class="number">1</span>, Time);</div><div class="line">	<span class="keyword">if</span> (y - <span class="number">1</span> &gt;= <span class="number">1</span> &amp;&amp; h[x][y] &lt; h[x][y - <span class="number">1</span>]) dfs1(k, x, y - <span class="number">1</span>, Time);</div><div class="line">	<span class="keyword">return</span> ;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=m; j++)</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;h[i][j]);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</div><div class="line">		dfs(<span class="number">1</span>, i);</div><div class="line">	<span class="keyword">int</span> ret = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</div><div class="line">		<span class="keyword">if</span> (!vis[n][i])</div><div class="line">			ret ++;</div><div class="line">	<span class="keyword">if</span> (ret)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"0\n%d\n"</span>, ret);</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</div><div class="line">	&#123;</div><div class="line">		dfs1(i, n, i, <span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=m; i&gt;=<span class="number">1</span>; i--)</div><div class="line">	&#123;</div><div class="line">		dfs1(i, n, i, <span class="number">2</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">memset</span>(dp, <span class="number">127</span>/<span class="number">3</span>, <span class="keyword">sizeof</span>(dp));</div><div class="line">	dp[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=m; j++)</div><div class="line">			<span class="keyword">if</span> (l[j] &lt;= i &amp;&amp; r[j] &gt;= i)</div><div class="line">			&#123;</div><div class="line">				dp[i] = min(dp[l[j] - <span class="number">1</span>] + <span class="number">1</span>, dp[i]);</div><div class="line">			&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"1\n%d\n"</span>, dp[m]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/07/31/2017-07-31-洛谷引水入城/" data-id="cj85a27me0001287z0lc3zkcv" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索，DP/">搜索，DP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          任务安排
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/31/2017-07-31-乌龟棋 洛谷1541（dp）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">乌龟棋</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">BLUE_M</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/13091291791msy" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://leanote.com/note/59c7a740d7efaa00cb000001" target="_blank" title="蚂蚁笔记">
+          蚂蚁笔记
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://dedsecr.github.io/" target="_blank" title="SXY">
+          SXY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://youngscc.github.io/" target="_blank" title="YY">
+          YY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://sssSSSay.github.io/" target="_blank" title="sSay">
+          sSay
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://olers.github.io/" target="_blank" title="学姐">
+          学姐
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.leanote.com/winee" target="_blank" title="司机">
+          司机
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://mlovtry.github.io/" target="_blank" title="白学家">
+          白学家
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.csdn.net/pretend_fal" target="_blank" title="沛沛">
+          沛沛
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2016 - 2017 Msy<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/person" title="" class="menuItem">日记</a>
+          
+            <a href="/knowledge" title="" class="menuItem">新知识</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

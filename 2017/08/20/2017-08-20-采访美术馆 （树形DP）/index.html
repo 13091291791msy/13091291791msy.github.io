@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>采访美术馆 | BLUE_M</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目经过数月的精心准备，Peer Brelstet，一个出了名的盗画者，准备开始他的下一个行动。艺术馆的结构，每条走廊要么分叉为两条走廊，要么通向一个展览室。Peer知道每个展室里藏画的数量，并且他精确测量了通过每条走廊的时间。由于经验老到，他拿下一幅画需要5秒的时间。你的任务是编一个程序，计算在警察赶来之前，他最多能偷到多少幅画。">
+<meta name="keywords" content="DP,树形DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="采访美术馆">
+<meta property="og:url" content="https://13091291791msy.github.io/2017/08/20/2017-08-20-采访美术馆 （树形DP）/index.html">
+<meta property="og:site_name" content="BLUE_M">
+<meta property="og:description" content="题目经过数月的精心准备，Peer Brelstet，一个出了名的盗画者，准备开始他的下一个行动。艺术馆的结构，每条走廊要么分叉为两条走廊，要么通向一个展览室。Peer知道每个展室里藏画的数量，并且他精确测量了通过每条走廊的时间。由于经验老到，他拿下一幅画需要5秒的时间。你的任务是编一个程序，计算在警察赶来之前，他最多能偷到多少幅画。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-14T06:00:51.730Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="采访美术馆">
+<meta name="twitter:description" content="题目经过数月的精心准备，Peer Brelstet，一个出了名的盗画者，准备开始他的下一个行动。艺术馆的结构，每条走廊要么分叉为两条走廊，要么通向一个展览室。Peer知道每个展室里藏画的数量，并且他精确测量了通过每条走廊的时间。由于经验老到，他拿下一幅画需要5秒的时间。你的任务是编一个程序，计算在警察赶来之前，他最多能偷到多少幅画。">
+  
+    <link rel="alternate" href="/atom.xml" title="BLUE_M" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/pic/06.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-2017-08-20-采访美术馆 （树形DP）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/20/2017-08-20-采访美术馆 （树形DP）/" class="article-date">
+  <time class="post-time" datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">20</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      采访美术馆
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>经过数月的精心准备，Peer Brelstet，一个出了名的盗画者，准备开始他的下一个行动。艺术馆的结构，每条走廊要么分叉为两条走廊，要么通向一个展览室。Peer知道每个展室里藏画的数量，并且他精确测量了通过每条走廊的时间。由于经验老到，他拿下一幅画需要5秒的时间。你的任务是编一个程序，计算在警察赶来之前，他最多能偷到多少幅画。<br><a id="more"></a></p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>第1行是警察赶到的时间，以s为单位。第2行描述了艺术馆的结构，是一串非负整数，成对地出现：每一对的第一个数是走过一条走廊的时间，第2个数是它末端的藏画数量；如果第2个数是0，那么说明这条走廊分叉为两条另外的走廊。数据按照深度优先的次序给出，请看样例。</p>
+<p>一个展室最多有20幅画。通过每个走廊的时间不超过20s。艺术馆最多有100个展室。警察赶到的时间在10min以内。</p>
+<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>输出偷到的画的数量</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h2><p>60</p>
+<p>7 0 8 0 3 1 14 2 10 0 12 4 6 2</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h2><p>2</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>用f[i][j] 表示从i这个节点开始话费j的时间可以摘到的最大画的数量</p>
+<p>f[i][Time] = Max(f[lc][lcTime]+f[rc][Time-lcTime-length])</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Max(x, y) (x &gt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Min(x, y) (x &lt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> F(i, x, y) for(register int i=x; i&lt;=y; i++)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> R(i, x, y) for(register int i=x; i&gt;=y; i--)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">in</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> ch; <span class="keyword">static</span> <span class="keyword">bool</span> flag;</div><div class="line">    <span class="keyword">for</span> (flag = <span class="literal">false</span>, ch = getchar(); ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>; ch = getchar()) flag |= ch == <span class="string">'-'</span>;</div><div class="line">    <span class="keyword">for</span> (x = <span class="number">0</span>; <span class="built_in">isdigit</span>(ch); ch = getchar()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + ch - <span class="string">'0'</span>;</div><div class="line">    x = flag ? -x : x;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> T;<span class="keyword">int</span> f[<span class="number">100</span>][<span class="number">1000</span>], tot;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> cnt = ++ tot, length, num;</div><div class="line">    in(length); in(num);</div><div class="line">    length &lt;&lt;= <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (num)</div><div class="line">    &#123;</div><div class="line">        F(Time, length, T)</div><div class="line">        &#123;</div><div class="line">            f[cnt][Time] = Min((Time - length)/<span class="number">5</span>, num);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> left = tot + <span class="number">1</span>, right; solve();</div><div class="line">        right = tot + <span class="number">1</span>; solve();</div><div class="line">        F(totTime, length, T)</div><div class="line">            F(lcTime, <span class="number">0</span>, totTime-length)</div><div class="line">                f[cnt][totTime] = Max(f[cnt][totTime], f[left][lcTime] + f[right][totTime-lcTime-length]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">work</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    in(T);T --;</div><div class="line">    solve();</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, f[<span class="number">1</span>][T]);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> TAT = work();</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;;&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/08/20/2017-08-20-采访美术馆 （树形DP）/" data-id="cj85a27ob0016287zvgn6edlj" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树形DP/">树形DP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/20/2017-08-22-书本整理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          书本整理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/20/2017-08-20-观光公交/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">观光公交</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">BLUE_M</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/13091291791msy" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://leanote.com/note/59c7a740d7efaa00cb000001" target="_blank" title="蚂蚁笔记">
+          蚂蚁笔记
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://dedsecr.github.io/" target="_blank" title="SXY">
+          SXY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://youngscc.github.io/" target="_blank" title="YY">
+          YY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://sssSSSay.github.io/" target="_blank" title="sSay">
+          sSay
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://olers.github.io/" target="_blank" title="学姐">
+          学姐
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.leanote.com/winee" target="_blank" title="司机">
+          司机
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://mlovtry.github.io/" target="_blank" title="白学家">
+          白学家
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.csdn.net/pretend_fal" target="_blank" title="沛沛">
+          沛沛
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2016 - 2017 Msy<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/person" title="" class="menuItem">日记</a>
+          
+            <a href="/knowledge" title="" class="menuItem">新知识</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

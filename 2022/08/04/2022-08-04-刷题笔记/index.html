@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>刷题笔记 | BLUE_M</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="9.26日考试T1：质因数分解+快速幂 将N!进行质因数分解 如果分解质数的个数为奇数就删掉一个如果为     偶数则直接乘入答案 T2：树状数组求逆序对  如果[l,r]是合法的 那么对于[l,r]中的每一个数都减一个L则∑≥0     并且如果都减一个R则∑≤0     我们用A[i]表示前i个数的前缀和     那么不合法状态就是对于区间[l,r]中的每一个数如果减一个L那么A[r]-A[">
+<meta name="keywords" content="总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷题笔记">
+<meta property="og:url" content="https://13091291791msy.github.io/2022/08/04/2022-08-04-刷题笔记/index.html">
+<meta property="og:site_name" content="BLUE_M">
+<meta property="og:description" content="9.26日考试T1：质因数分解+快速幂 将N!进行质因数分解 如果分解质数的个数为奇数就删掉一个如果为     偶数则直接乘入答案 T2：树状数组求逆序对  如果[l,r]是合法的 那么对于[l,r]中的每一个数都减一个L则∑≥0     并且如果都减一个R则∑≤0     我们用A[i]表示前i个数的前缀和     那么不合法状态就是对于区间[l,r]中的每一个数如果减一个L那么A[r]-A[">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-27T12:53:01.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="刷题笔记">
+<meta name="twitter:description" content="9.26日考试T1：质因数分解+快速幂 将N!进行质因数分解 如果分解质数的个数为奇数就删掉一个如果为     偶数则直接乘入答案 T2：树状数组求逆序对  如果[l,r]是合法的 那么对于[l,r]中的每一个数都减一个L则∑≥0     并且如果都减一个R则∑≤0     我们用A[i]表示前i个数的前缀和     那么不合法状态就是对于区间[l,r]中的每一个数如果减一个L那么A[r]-A[">
+  
+    <link rel="alternate" href="/atom.xml" title="BLUE_M" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/pic/06.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-2022-08-04-刷题笔记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/04/2022-08-04-刷题笔记/" class="article-date">
+  <time class="post-time" datetime="2022-08-03T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">04</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      刷题笔记
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="9-26日考试"><a href="#9-26日考试" class="headerlink" title="9.26日考试"></a>9.26日考试</h1><pre><code>T1：质因数分解+快速幂 将N!进行质因数分解 如果分解质数的个数为奇数就删掉一个如果为
+    偶数则直接乘入答案
+T2：树状数组求逆序对  如果[l,r]是合法的 那么对于[l,r]中的每一个数都减一个L则∑≥0
+    并且如果都减一个R则∑≤0
+    我们用A[i]表示前i个数的前缀和
+    那么不合法状态就是对于区间[l,r]中的每一个数如果减一个L那么A[r]-A[l-1]＜0则
+    A[l-1]＞A[r] 如果都用R减去这个数 那么A[l-1]＞A[r]为不合法状态
+    于是问题就转换为了一个求前缀和逆序对的问题
+T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行搜索 判断对于当前这个葱是和
+    前面的放在一个栅栏里还是自己再用一个栅栏  最终去最优解  剪枝：最优化剪枝
+</code></pre><hr>
+<a id="more"></a>
+<h1 id="9-25测试题"><a href="#9-25测试题" class="headerlink" title="9.25测试题"></a>9.25测试题</h1><pre><code>T1：题意 -&gt; 一个字符串是否同时存在独立的AC串和CA串  做法 -&gt; 记录下每一个AC出现的位置(只记录
+    A的位置)和每一个CA出现的位置(只记录C的位置)记录下来 再扫一遍查看是否存在两个位置(一个A
+    的位置一个C的位置)差距≥2 如果存在则输出YES 否则输出NO
+T2：利用宽搜扩展状态每次用当前状态尝试几种操作然后判断这种状态是否出现过 如果没有出现过就放入
+    队列否则跳过 注意边界T
+</code></pre><hr>
+<h1 id="洛谷2884-每月的费用"><a href="#洛谷2884-每月的费用" class="headerlink" title="洛谷2884 每月的费用"></a>洛谷2884 每月的费用</h1><p>二分答案</p>
+<p>判断答案是否可行时 必须判断单个的是否比二分的答案大 如果大 则直接返回0  （必须判断 否则会WA）</p>
+<hr>
+<h1 id="9-20日考试"><a href="#9-20日考试" class="headerlink" title="9.20日考试"></a>9.20日考试</h1><pre><code>T1：模拟  坑点：注意闰年二月的天数
+T2：堆  用小根堆记录每一个位置被占用的时间  每次让第i个去被占用时间最小的位置 最后输出堆顶
+T3：枚举+贪心 如果要放1*2的一定放价格最大的 1*3的同理
+坑点：2*2的网格无法放1*3的物品  如果只放1*3最终会剩下2*2网格的只有2*i(i%3==2)的背包会
+出现这种情况 所以枚举只能枚举1*3的放多少个 根据前面的坑点可以计算出1*3最多放多少个 剩余
+的体积放1*2的物品即可 然后取最大值
+</code></pre><hr>
+<h1 id="洛谷2419-牛大赛"><a href="#洛谷2419-牛大赛" class="headerlink" title="洛谷2419 牛大赛"></a>洛谷2419 牛大赛</h1><p>Floyd</p>
+<p>用f[i][j] 表示i可以打败j<br>如果 对于i 可以确定它和其他点的关系 则这个点的排名就可以确定</p>
+<hr>
+<h1 id="洛谷1849-拖拉机"><a href="#洛谷1849-拖拉机" class="headerlink" title="洛谷1849 拖拉机"></a>洛谷1849 拖拉机</h1><p>spfa</p>
+<p>确定边界 跑spfa</p>
+<hr>
+<h1 id="洛谷1705-爱与愁的过火"><a href="#洛谷1705-爱与愁的过火" class="headerlink" title="洛谷1705 爱与愁的过火"></a>洛谷1705 爱与愁的过火</h1><p>DP</p>
+<p>用f[i][j]表示选i种菜价格为j元的可能有几种</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//核心代码</span></div><div class="line">F(i, <span class="number">1</span>, m) R(j, r, <span class="number">1</span>) F(k, a[i], t)</div><div class="line">    f[j][k] += f[j<span class="number">-1</span>][k-a[i]];</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="洛谷1638-逛画展"><a href="#洛谷1638-逛画展" class="headerlink" title="洛谷1638 逛画展"></a>洛谷1638 逛画展</h1><p>枚举</p>
+<p>枚举以每一点为左端点的最小区间   更新答案</p>
+<hr>
+<h1 id="洛谷1022-计算器的改良"><a href="#洛谷1022-计算器的改良" class="headerlink" title="洛谷1022 计算器的改良"></a>洛谷1022 计算器的改良</h1><p>模拟  </p>
+<p>未知数的系数作为分母  常数项 作为分子</p>
+<p>对于等号右边的在相加时乘-1</p>
+<hr>
+<h1 id="洛谷1037-产生数"><a href="#洛谷1037-产生数" class="headerlink" title="洛谷1037 产生数"></a>洛谷1037 产生数</h1><p>通过Floyd 求出哪两个数之间可以转换 记录每一个数 可以有几种转换</p>
+<p>枚举给的数中包含哪些数字 用乘法原理</p>
+<hr>
+<h1 id="洛谷1062-数列"><a href="#洛谷1062-数列" class="headerlink" title="洛谷1062 数列"></a>洛谷1062 数列</h1><p>模拟</p>
+<p>找规律  k的i次幂的位置在2的i次幂</p>
+<p>而从k^(i-1) ~ k^i 之间的数则是由k^(i-1)和前(2^(i-1))个数分别求和得到</p>
+<hr>
+<h1 id="洛谷1077-摆花"><a href="#洛谷1077-摆花" class="headerlink" title="洛谷1077 摆花"></a>洛谷1077 摆花</h1><p>DP</p>
+<p>用f[i]表示摆到第i盆的可能数</p>
+<p>f[i] = ∑f[i-k] k∈[1,num[i]];</p>
+<hr>
+<h1 id="洛谷1209-修理牛棚"><a href="#洛谷1209-修理牛棚" class="headerlink" title="洛谷1209 修理牛棚"></a>洛谷1209 修理牛棚</h1><p>DP</p>
+<p>用f[i]表示到达第i个牛棚需要的总长度是多少</p>
+<p>f[i] = Min(当前这个牛棚从新用一个模板，与前一个牛棚用同一个木板)<br>f[i]=Min(f[j]+a[i]-a[i-1], f[j-1]+1);</p>
+<p>注意：每一必须将f[0]赋一个极大值</p>
+<hr>
+<h1 id="洛谷1213-时钟"><a href="#洛谷1213-时钟" class="headerlink" title="洛谷1213 时钟"></a>洛谷1213 时钟</h1><p>枚举</p>
+<p>枚举九种操作各需要多少次  每一种操作最多只能用3次</p>
+<p>对于每一时钟看看对于这个时钟有影响的有多少次操作 然后判断时钟最终是否变为12点</p>
+<hr>
+<h1 id="洛谷1214-等差数列"><a href="#洛谷1214-等差数列" class="headerlink" title="洛谷1214 等差数列"></a>洛谷1214 等差数列</h1><p>模拟</p>
+<p>想给出的数列从大到小排序  然后确定前两项  往后推n项</p>
+<hr>
+<h1 id="洛谷1327-数列排序"><a href="#洛谷1327-数列排序" class="headerlink" title="洛谷1327 数列排序"></a>洛谷1327 数列排序</h1><p>对于给出的序列  进行排序</p>
+<p>对于一个序列中的数a 如果a在原序列中的位置与排序后的位置不同  就将原序列中占据a排序后的位置的数与a交换<br>同时更新答案和调换的那个数的目前位置</p>
+<hr>
+<h1 id="洛谷1353-跑步"><a href="#洛谷1353-跑步" class="headerlink" title="洛谷1353 跑步"></a>洛谷1353 跑步</h1><p>DP</p>
+<p>用f[i][j]表示i分钟此时疲劳度为j时能跑的最远距离</p>
+<p>1.如果疲劳度为0 那么枚举休息的时间的长短<br>f[i][0] = Max(f[i-j][j]) j∈[1, Min(i,m)]<br>2.当疲劳度为0时 还可以继续休息<br>f[i][0] = Max(f[i-1][0]);<br>3.可以选择在第i秒进行跑步<br>f[i][j] = Max(f[i-1][j-1]+d[i]);</p>
+<hr>
+<h1 id="洛谷1407-工资"><a href="#洛谷1407-工资" class="headerlink" title="洛谷1407 工资"></a>洛谷1407 工资</h1><p>使用低消法 如果当前这个位众数 那么 如果碰到一个和这个数不一样的就让计数器– 否则++<br>如果计数器变为0则证明这不是众数更新记录的众数 最终输出</p>
+<hr>
+<h1 id="vijos-1228拯救世界-星际大战"><a href="#vijos-1228拯救世界-星际大战" class="headerlink" title="vijos 1228拯救世界-星际大战"></a>vijos 1228拯救世界-星际大战</h1><p>DP 思想</p>
+<p>用f[i][j] 表示用i个导弹打掉状态为j的目标（二进制第i位表示第i个目标是否打掉）需要的最短距离</p>
+<hr>
+<h1 id="vijos-1250最勇敢的机器人"><a href="#vijos-1250最勇敢的机器人" class="headerlink" title="vijos 1250最勇敢的机器人"></a>vijos 1250最勇敢的机器人</h1><p>背包DP</p>
+<p>用并查集分组 然后做一遍分组背包DP</p>
+<hr>
+<h1 id="cogs-2480筷子-："><a href="#cogs-2480筷子-：" class="headerlink" title="cogs 2480筷子 ："></a>cogs 2480筷子 ：</h1><p>一个数列其中存在一个数且仅存在一个数出现过奇数次 在1MB的内存下 找出这个数</p>
+<p>位运算：如果一个数被异或偶数次则等于没有被异或</p>
+<hr>
+<h1 id="coge-1967相遇与问候"><a href="#coge-1967相遇与问候" class="headerlink" title="coge 1967相遇与问候"></a>coge 1967相遇与问候</h1><p>模拟：使用两个队列记录每一个时间两头奶牛的移动方向 然后开始模拟</p>
+<hr>
+<h1 id="streaming-5NOIP模拟赛T1-珠"><a href="#streaming-5NOIP模拟赛T1-珠" class="headerlink" title="streaming#5NOIP模拟赛T1 珠"></a>streaming#5NOIP模拟赛T1 珠</h1><p>记录每一个‘2’的位置 每次直接从当前位置开始顺时针和逆时针扫然后更新最长的长度</p>
+<hr>
+<h1 id="streaming-5NOIP模拟赛T2-兔农"><a href="#streaming-5NOIP模拟赛T2-兔农" class="headerlink" title="streaming#5NOIP模拟赛T2 兔农"></a>streaming#5NOIP模拟赛T2 兔农</h1><p>手玩几个数据 就可以发现当k为偶数的时候不存在兔子死亡的时候 所以可以直接进行快速幂</p>
+<p>而当k为奇数的时候存在一次兔子死亡的情况之后就不会再出现兔子死亡的情况 所以分别记录模k和模p的值当模k为1的时候让模p的值减1 然后再进行快速幂</p>
+<hr>
+<h1 id="streaming-5NOIP模拟赛T3-高维网络"><a href="#streaming-5NOIP模拟赛T3-高维网络" class="headerlink" title="streaming#5NOIP模拟赛T3 高维网络"></a>streaming#5NOIP模拟赛T3 高维网络</h1><p>dp + 组合数 + 容斥原理</p>
+<p>我们用总的方案减去经过破坏点的方案数就是答案  用f[i]表示从A到i(i记录第i个破坏点)这个点的不经过破坏点的方案数 用g[i][j]表示从i到j可以经过破坏点的方案数</p>
+<p>$$ g[i][j] = (各维度权值之和的阶乘) / (各维度阶乘之积) $$</p>
+<p>例：二维情况</p>
+<p>$$ (行数+列数)! / (行数! * 列数!) $$</p>
+<p>$$ f[i] = g[A][x] - ∑f[y] * g[y][x] (y应该先被更新) $$</p>
+<hr>
+<h1 id="BZOJ-越狱"><a href="#BZOJ-越狱" class="headerlink" title="BZOJ 越狱"></a>BZOJ 越狱</h1><p>组合数</p>
+<p>用总共的可能减去不重复的可能就是最终答案</p>
+<p>如果要不保证当前这个与前一个不一样那么当前这个就有m-1中可能</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2022/08/04/2022-08-04-刷题笔记/" data-id="cj85a27oo001h287z6h5et1ve" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/28/2017-09-28-noip模拟赛9.28考试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">9.28考试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">BLUE_M</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/13091291791msy" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://leanote.com/note/59c7a740d7efaa00cb000001" target="_blank" title="蚂蚁笔记">
+          蚂蚁笔记
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://dedsecr.github.io/" target="_blank" title="SXY">
+          SXY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://youngscc.github.io/" target="_blank" title="YY">
+          YY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://sssSSSay.github.io/" target="_blank" title="sSay">
+          sSay
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://olers.github.io/" target="_blank" title="学姐">
+          学姐
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.leanote.com/winee" target="_blank" title="司机">
+          司机
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://mlovtry.github.io/" target="_blank" title="白学家">
+          白学家
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.csdn.net/pretend_fal" target="_blank" title="沛沛">
+          沛沛
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2016 - 2017 Msy<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/person" title="" class="menuItem">日记</a>
+          
+            <a href="/knowledge" title="" class="menuItem">新知识</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

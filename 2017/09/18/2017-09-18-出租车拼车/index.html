@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>出租车拼车 | BLUE_M</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目假设 N 位 Oier 准备拼车，此时为 0 时刻，从校门到目的地需要支付给出租 车师傅 D 元（按车次算，不管里面坐了多少 Oier），假如 S 分钟后恰能赶上比赛，">
+<meta name="keywords" content="DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="出租车拼车">
+<meta property="og:url" content="https://13091291791msy.github.io/2017/09/18/2017-09-18-出租车拼车/index.html">
+<meta property="og:site_name" content="BLUE_M">
+<meta property="og:description" content="题目假设 N 位 Oier 准备拼车，此时为 0 时刻，从校门到目的地需要支付给出租 车师傅 D 元（按车次算，不管里面坐了多少 Oier），假如 S 分钟后恰能赶上比赛，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-18T13:14:32.607Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="出租车拼车">
+<meta name="twitter:description" content="题目假设 N 位 Oier 准备拼车，此时为 0 时刻，从校门到目的地需要支付给出租 车师傅 D 元（按车次算，不管里面坐了多少 Oier），假如 S 分钟后恰能赶上比赛，">
+  
+    <link rel="alternate" href="/atom.xml" title="BLUE_M" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/pic/06.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-2017-09-18-出租车拼车" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/18/2017-09-18-出租车拼车/" class="article-date">
+  <time class="post-time" datetime="2017-09-17T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">9月</span><br/>
+    <span class="post-day">18</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      出租车拼车
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>假设 N 位 Oier 准备拼车，此时为 0 时刻，从校门到目的地需要支付给出租</p>
+<p>车师傅 D 元（按车次算，不管里面坐了多少 Oier），假如 S 分钟后恰能赶上比赛，</p>
+<a id="more"></a>
+<p>那么 S 分钟后经过校门口的出租车自然可以忽略不计了。现在给出在这 S 分钟当</p>
+<p>中经过校门的所有的 K 辆出租车先后到达校门口的时间 T i 及里面剩余的座位 Zi</p>
+<p>(1 &lt;= Zi &lt;= 4)，Oier 可以选择上车几个人（不能超过），当然，也可以选择上 0 个</p>
+<p>人，那就是不坐这辆车。</p>
+<p>俗话说，时间就是金钱，这里小 x 把每个 Oier 在校门等待出租车的分钟数 等同于花了相同多的钱（例如小 x 等待了 20 分钟，那相当于他额外花了 20 元钱）。</p>
+<p>在保证所有 Oier 都能在比赛开始前到达比赛地点的情况下，聪明的你能计 算出他们最少需要花多少元钱么？</p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>每组数据以四个整数 N , K , D , S 开始，具体含义参见题目描述。</p>
+<p>接着 K 行，表示第 i 辆出租车在第 Ti 分钟到达校门，其空余的座位数为 Zi</p>
+<p>（时间按照先后顺序）。</p>
+<p>N &lt;= 100，K &lt;= 100，D &lt;= 100，S &lt;= 100，1 &lt;= Zi &lt;= 4，1&lt;= T(i) &lt;= T(i+1) &lt;= S</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>对于每组测试数据，输出占一行，如果他们所有人能在比赛前到达比赛地点，</p>
+<p>则输出一个整数，代表他们最少需要花的钱（单位：元），否则请输出“impossible”。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h2><p>2 2 10 5</p>
+<p>1 1</p>
+<p>2 2</p>
+<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h2><p>14</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>DP</p>
+<p>用dp[i][j]表示前i辆车借走j个人需要花的钱</p>
+<h4 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h4><pre><code>F(i, 1, k) F(j, 0, n)
+{
+    dp[i][j] = dp[i-1][j];
+    F(a, 1, Min(j, z[i]))
+    {
+        dp[i][j] = Min(dp[i][j], dp[i-1][j-a]+t[i]*a+d);
+    }
+}
+</code></pre><hr>
+<h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Max(x, y) (x &gt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Min(x, y) (x &lt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> F(i, x, y) for(register int i=x; i&lt;=y; i++)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> R(i, x, y) for(register int i=x; i&gt;=y; i--)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">in</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> ch; <span class="keyword">static</span> <span class="keyword">bool</span> flag;</div><div class="line">    <span class="keyword">for</span>(flag=<span class="literal">false</span>, ch=getchar(); ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>; ch=getchar()) flag |= ch==<span class="string">'-'</span>;</div><div class="line">    <span class="keyword">for</span>(x=<span class="number">0</span>; <span class="built_in">isdigit</span>(ch); ch=getchar()) x = (x&lt;&lt;<span class="number">1</span>) + (x&lt;&lt;<span class="number">3</span>) + ch - <span class="string">'0'</span>;</div><div class="line">    x = flag ? -x : x;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> n, k, d, s;</div><div class="line"><span class="keyword">int</span> t[<span class="number">105</span>], z[<span class="number">105</span>];</div><div class="line"><span class="keyword">int</span> dp[<span class="number">105</span>][<span class="number">105</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">work</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(dp, <span class="number">127</span>/<span class="number">3</span>, <span class="keyword">sizeof</span>(dp));</div><div class="line">    <span class="keyword">int</span> INF = dp[<span class="number">0</span>][<span class="number">0</span>];</div><div class="line">    in(n); in(k); in(d); in(s);</div><div class="line">    F(i, <span class="number">1</span>, k) in(t[i]), in(z[i]);</div><div class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    F(i, <span class="number">1</span>, k) F(j, <span class="number">0</span>, n)</div><div class="line">    &#123;</div><div class="line">        dp[i][j] = dp[i<span class="number">-1</span>][j];</div><div class="line">        F(a, <span class="number">1</span>, Min(j, z[i]))</div><div class="line">        &#123;</div><div class="line">            dp[i][j] = Min(dp[i][j], dp[i<span class="number">-1</span>][j-a]+t[i]*a+d);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (dp[k][n] == INF) <span class="built_in">printf</span>(<span class="string">"impossible\n"</span>);</div><div class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[k][n]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> TAT = work();</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;;&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-出租车拼车/" data-id="cj85a27os001l287z78b49nob" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/18/2017-09-18-过度种植/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          过度种植
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/18/2017-09-18-刷墙/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">刷墙</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">BLUE_M</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://chuantu.biz/t6/61/1506170808x1877069128.jpg">
+    <h2 class="author">Msy</h2>
+    <h3 class="description">NONE!!</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>27</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>20</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/13091291791msy" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://leanote.com/note/59c7a740d7efaa00cb000001" target="_blank" title="蚂蚁笔记">
+          蚂蚁笔记
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://dedsecr.github.io/" target="_blank" title="SXY">
+          SXY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://youngscc.github.io/" target="_blank" title="YY">
+          YY
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://sssSSSay.github.io/" target="_blank" title="sSay">
+          sSay
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://olers.github.io/" target="_blank" title="学姐">
+          学姐
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.leanote.com/winee" target="_blank" title="司机">
+          司机
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://mlovtry.github.io/" target="_blank" title="白学家">
+          白学家
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://blog.csdn.net/pretend_fal" target="_blank" title="沛沛">
+          沛沛
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2016 - 2017 Msy<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/person" title="" class="menuItem">日记</a>
+          
+            <a href="/knowledge" title="" class="menuItem">新知识</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
