@@ -69,146 +69,6 @@
 
         <section id="main">
   
-    <article id="post-2017-08-04-最优贸易 洛谷1073 （bfs）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/04/2017-08-04-最优贸易 洛谷1073 （bfs）/" class="article-date">
-  <time class="post-time" datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">8月</span><br/>
-    <span class="post-day">04</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/04/2017-08-04-最优贸易 洛谷1073 （bfs）/">最优贸易</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>C 国有 n 个大城市和 m 条道路，每条道路连接这 n 个城市中的某两个城市。任意两个城市之间最多只有一条道路直接相连。这 m 条道路中有一部分为单向通行的道路，一部分为双向通行的道路，双向通行的道路在统计条数时也计为 1 条。<br>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/04/2017-08-04-最优贸易 洛谷1073 （bfs）/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/04/2017-08-04-最优贸易 洛谷1073 （bfs）/" data-id="cj85ad2nz000dao7ztv1hd3ja" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索/">搜索</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-2017-08-04-愤怒的小鸟 洛谷2831（状压dp）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/04/2017-08-04-愤怒的小鸟 洛谷2831（状压dp）/" class="article-date">
-  <time class="post-time" datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">8月</span><br/>
-    <span class="post-day">04</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/04/2017-08-04-愤怒的小鸟 洛谷2831（状压dp）/">愤怒的小鸟</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>有一架弹弓位于(0,0)处，每次Kiana可以用它向第一象限发射一只红色的小鸟，小鸟们的飞行轨迹均为形如<br>y=ax^2+bx 的曲线，其中a,b是Kiana指定的参数，且必须满足a<0。 <!--more--=""></0。></p>
-<p>当小鸟落回地面(即x轴）时，它就会瞬间消失。</p>
-<p>在游戏的某个关卡里，平面的第一象限中有n只绿色的小猪，其中第i只小猪所在的坐标为(xi,yi)。</p>
-<p>如果某只小鸟的飞行轨迹经过了(xi,yi),那么第i只小猪就会被消灭掉，同时小鸟将会沿着原先的轨迹继续飞行；</p>
-<p>如果一只小鸟的飞行轨迹没有经过(xi,yi)，那么这只小鸟飞行的全过程就不会对第i只小猪产生任何影响。</p>
-<p>例如，若两只小猪分别位于(1,3)和(3,3)，Kiana可以选择发射一只飞行轨迹为y=-x^2+4x的小鸟，这样两只小猪就会被这只小鸟一起消灭。</p>
-<p>而这个游戏的目的，就是通过发射小鸟消灭所有的小猪。</p>
-<p>这款神奇游戏的每个关卡对Kiana来说都很难，所以Kiana还输入了一些神秘的指令，使得自己能更轻松地完成这个游戏。这些指令将在【输入格式】中详述。</p>
-<p>假设这款游戏一共有T个关卡，现在Kiana想知道，对于每一个关卡，至少需要发射多少只小鸟才能消灭所有的小猪。由于她不会算，所以希望由你告诉她。</p>
-<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>第一行包含一个正整数T，表示游戏的关卡总数。</p>
-<p>下面依次输入这T个关卡的信息。每个关卡第一行包含两个非负整数n,m，分别表示该关卡中的小猪数量和Kiana输入的神秘指令类型。接下来的n行中，第i行包含两个正实数(xi,yi)，表示第i只小猪坐标为(xi,yi)。数据保证同一个关卡中不存在两只坐标完全相同的小猪。</p>
-<p>如果m=0，表示Kiana输入了一个没有任何作用的指令。</p>
-<p>如果m=1，则这个关卡将会满足：至多用⌈​3​n+1⌉只小鸟即可消灭所有小猪。</p>
-<p>如果m=2,则这个关卡将会满足：一定存在一种最优解，其中有一只小鸟消灭了至少⌊​3​n​​⌋只小猪。</p>
-<p>保证1&lt;=n&lt;=18，0&lt;=m&lt;=2，0&lt;xi,yi&lt;10，输入中的实数均保留到小数点后两位。</p>
-<p>上文中，符号⌈x⌉和⌊x⌋分别表示对c向上取整和向下取整</p>
-<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>对每个关卡依次输出一行答案。</p>
-<p>输出的每一行包含一个正整数，表示相应的关卡中，消灭所有小猪最少需要的小鸟数量</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h2><p>2</p>
-<p>2 0</p>
-<p>1.00 3.00</p>
-<p>3.00 3.00</p>
-<p>5 2</p>
-<p>1.00 5.00</p>
-<p>2.00 8.00</p>
-<p>3.00 9.00</p>
-<p>4.00 8.00</p>
-<p>5.00 5.00</p>
-<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h2><p>1</p>
-<p>1</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>我们可以用g[i][j]表示我用ij两个小猪确定一条抛物线r然后记录在这条抛物线上可以攻击到哪些个小猪将这些进行状压记录在g[i][j];</p>
-<p>然后枚举每一种状态 选择二进制位最小的1 然后看这个1由哪些状态转移</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>精度问题！！！</p>
-<hr>
-<h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-6</span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Min</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;<span class="keyword">return</span> x &lt;= y ? x : y;&#125;</div><div class="line"><span class="keyword">int</span> T;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></div><div class="line">	<span class="keyword">double</span> x, y;</div><div class="line">&#125;a[<span class="number">25</span>];</div><div class="line"><span class="keyword">int</span> g[<span class="number">25</span>][<span class="number">25</span>], dp[<span class="number">1</span> &lt;&lt; <span class="number">20</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">can</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">fabs</span>(x - y) &lt; eps;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">int</span> y)</span> </span>&#123;x |= (<span class="number">1</span> &lt;&lt; (y - <span class="number">1</span>));&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">	<span class="keyword">while</span> (T --)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">memset</span>(g, <span class="number">0</span>, <span class="keyword">sizeof</span>(g));</div><div class="line">		<span class="keyword">int</span> n, m;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;a[i].x, &amp;a[i].y);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) Add(g[i][i], i);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;=n; j++)</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">double</span> xx1 = a[i].x, yy1 = a[i].y, xx2 = a[j].x, yy2 = a[j].y;</div><div class="line">				<span class="keyword">double</span> A = (yy2 / xx2 - yy1 / xx1) / (xx2 - xx1);</div><div class="line">				<span class="keyword">double</span> B = yy1 / xx1 - A * xx1;</div><div class="line">				<span class="keyword">if</span> (A &gt;= <span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">1</span>; k&lt;=n; k++) <span class="keyword">if</span> (can(a[k].y, A * a[k].x * a[k].x + B * a[k].x)) Add(g[i][j], k);</div><div class="line">			&#125;</div><div class="line">		<span class="keyword">int</span> ALL = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=i; j&lt;=n; j++)</div><div class="line">				g[i][j] ^= ALL;</div><div class="line">		<span class="built_in">memset</span>(dp, <span class="number">127</span>, <span class="keyword">sizeof</span>(dp)); dp[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> s=<span class="number">1</span>; s&lt;=ALL; s++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> t = <span class="number">0</span>, i = <span class="number">0</span>, w = s;</div><div class="line">			<span class="keyword">while</span> (w) &#123;t++; <span class="keyword">if</span>(w&amp;<span class="number">1</span>)&#123;i=t;<span class="keyword">break</span>;&#125; w&gt;&gt;=<span class="number">1</span>;&#125;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=i; j++) dp[s] = Min(dp[s&amp;g[j][i]]+<span class="number">1</span>, dp[s]);</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=i; j&lt;=n; j++) dp[s] = Min(dp[s&amp;g[i][j]]+<span class="number">1</span>, dp[s]);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[ALL]);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/04/2017-08-04-愤怒的小鸟 洛谷2831（状压dp）/" data-id="cj85ad2nx000cao7zq3uu31pd" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/状压，DP/">状压，DP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
     <article id="post-2017-08-04-冰精冻西瓜 洛谷3787（树状数组）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/04/2017-08-04-冰精冻西瓜 洛谷3787（树状数组）/" class="article-date">
@@ -250,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/04/2017-08-04-冰精冻西瓜 洛谷3787（树状数组）/" data-id="cj85ad2nt0009ao7zrfepqwjt" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/08/04/2017-08-04-冰精冻西瓜 洛谷3787（树状数组）/" data-id="cj85aepr9001i2o7zvki7umnq" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树状数组/">树状数组</a></li></ul>
@@ -264,12 +124,12 @@
 
 
   
-    <article id="post-2017-08-01-任务安排 洛谷2365（dp）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2017-08-04-秘密代码 洛谷3102（dp）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/" class="article-date">
-  <time class="post-time" datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished">
+    <a href="/2017/08/04/2017-08-04-秘密代码 洛谷3102（dp）/" class="article-date">
+  <time class="post-time" datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished">
     <span class="post-month">8月</span><br/>
-    <span class="post-day">01</span>
+    <span class="post-day">04</span>
   </time>
 </a>
    
@@ -281,7 +141,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/">任务安排</a>
+      <a class="article-title" href="/2017/08/04/2017-08-04-秘密代码 洛谷3102（dp）/">秘密代码</a>
     </h1>
   
 
@@ -296,19 +156,74 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>N个任务排成一个序列在一台机器上等待完成（顺序不得改变），这N个任务被分成若干批，每批包含相邻的若干任务。从时刻0开始，这些任务被分批加工，第i个任务单独完成所需的时间是Ti。在每批任务开始前，机器需要启动时间S，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。每个任务的费用是它的完成时刻乘以一个费用系数Fi。请确定一个分组方案，使得总费用最小。<br>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>对于一个字符串S只由大写字母组成 通过一系列操作对其进行加密操作为删除S的前面或者后面的若干个字符（但不删光整个S），并将剩下的部分连接到原字符串S的前面或者后面给出加密后的字符串 问共有几种加密方法？<br>
         
           <p class="article-more-link">
-            <a href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/#more">Read More</a>
+            <a href="/2017/08/04/2017-08-04-秘密代码 洛谷3102（dp）/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/" data-id="cj85ad2nc0002ao7z6l8io6r2" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/08/04/2017-08-04-秘密代码 洛谷3102（dp）/" data-id="cj85aeppq000c2o7z0gf21p96" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-2017-08-04-花匠 洛谷1970（暴力）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/04/2017-08-04-花匠 洛谷1970（暴力）/" class="article-date">
+  <time class="post-time" datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">04</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/04/2017-08-04-花匠 洛谷1970（暴力）/">花匠</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>花匠栋栋种了一排花，每株花都有自己的高度。花儿越长越大，也越来越挤。栋栋决定把这排中的一部分花移走，将剩下的留在原地，使得剩下的花能有空间长大，同时，栋栋希望剩下的花排列得比较别致。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/04/2017-08-04-花匠 洛谷1970（暴力）/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/08/04/2017-08-04-花匠 洛谷1970（暴力）/" data-id="cj85aepps000d2o7zsnx5bqct" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/暴力/">暴力</a></li></ul>
 
     </footer>
   </div>
@@ -360,10 +275,65 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/01/2017-08-01-选学霸 洛谷2170（并查集）/" data-id="cj85ad2no0007ao7z1ddkruh2" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/08/01/2017-08-01-选学霸 洛谷2170（并查集）/" data-id="cj85aeppm00092o7zwo2zmakb" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并查集/">并查集</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-2017-08-01-任务安排 洛谷2365（dp）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/" class="article-date">
+  <time class="post-time" datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">01</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/">任务安排</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>N个任务排成一个序列在一台机器上等待完成（顺序不得改变），这N个任务被分成若干批，每批包含相邻的若干任务。从时刻0开始，这些任务被分批加工，第i个任务单独完成所需的时间是Ti。在每批任务开始前，机器需要启动时间S，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。每个任务的费用是它的完成时刻乘以一个费用系数Fi。请确定一个分组方案，使得总费用最小。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/08/01/2017-08-01-任务安排 洛谷2365（dp）/" data-id="cj85aepr7001g2o7ztsd8i8id" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li></ul>
 
     </footer>
   </div>
@@ -415,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/07/31/2017-07-31-洛谷引水入城/" data-id="cj85ad2nl0005ao7z46mva8u4" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/07/31/2017-07-31-洛谷引水入城/" data-id="cj85aepp400022o7z1h3521w7" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索，DP/">搜索，DP</a></li></ul>
@@ -470,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/07/31/2017-07-31-乌龟棋 洛谷1541（dp）/" data-id="cj85ad2n40000ao7zjmrl3rhn" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/07/31/2017-07-31-乌龟棋 洛谷1541（dp）/" data-id="cj85aepow00002o7zhmviq7ku" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li></ul>
