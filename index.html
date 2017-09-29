@@ -121,7 +121,7 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2022/08/04/2022-08-04-刷题笔记/" data-id="cj85aa5qz001hxs7z9zvbp4c1" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2022/08/04/2022-08-04-刷题笔记/" data-id="cj85ad2pk001hao7z9wxbq7no" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
@@ -167,18 +167,16 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><p>对于60%的数据，N, M ≤ 3000。<br>对于100%的数据，N ≤ 1018, M ≤ 3000。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>对于60%的数据 可以用并查集维护折叠效果相同的点<br>对于100%的数据 很显然无法维护并查集我们可以直接修改剩下的操作 具体如果修改开代码</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Max(x, y) (x &gt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Min(x, y) (x &lt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MM(x, y) memset(x, y, sizeof(x))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> F(i, x, y) for(register int i=x; i&lt;=y; i++)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> R(i, x, y) for(register int i=x; i&gt;=y; i--)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">in</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> ch; <span class="keyword">static</span> <span class="keyword">bool</span> flag;</div><div class="line">    <span class="keyword">for</span>(flag=<span class="literal">false</span>, ch=getchar(); ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>; ch=getchar()) flag |= ch==<span class="string">'-'</span>;</div><div class="line">    <span class="keyword">for</span>(x=<span class="number">0</span>; <span class="built_in">isdigit</span>(ch); ch=getchar()) x = (x&lt;&lt;<span class="number">1</span>) + (x&lt;&lt;<span class="number">3</span>) + ch - <span class="string">'0'</span>;</div><div class="line">    x = flag ? -x : x;</div><div class="line">&#125;</div><div class="line">LL n, f[<span class="number">3005</span>];</div><div class="line"><span class="keyword">int</span> m;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">work</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	freopen(<span class="string">"he.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>); freopen(<span class="string">"he.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%d"</span>, &amp;n, &amp;m);</div><div class="line">    F(i, <span class="number">1</span>, m) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;f[i]);</div><div class="line">    LL l = <span class="number">0</span>, r = n;</div><div class="line">    F(i, <span class="number">1</span>, m) &#123;</div><div class="line">    	<span class="keyword">if</span> (f[i] * <span class="number">2</span> &gt; l + r) r = f[i];</div><div class="line">    	<span class="keyword">else</span> l = f[i];</div><div class="line">        <span class="comment">// 如果f[i]的左边长度大于右边长度 则让r变为f[i] 否则让l变为f[i]</span></div><div class="line">    	F(j, i+<span class="number">1</span>, m) &#123;</div><div class="line">    		<span class="keyword">if</span> (f[j] &gt; r) &#123;</div><div class="line">    			f[j] = r * <span class="number">2</span> - f[j];</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (f[j] &lt; l) &#123;</div><div class="line">				f[j] = l * <span class="number">2</span> - f[j];</div><div class="line">			&#125;</div><div class="line">            <span class="comment">// 如果f[j]不在[l,r]上 则将f[j]映射到[l,r]上</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, r-l);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> TAT = work();</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;;&#125;</div></pre></td></tr></table></figure>
-<h1 id="T3：它"><a href="#T3：它" class="headerlink" title="T3：它"></a>T3：它</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>N个人坐成一圈，其中第K个人拿着一个球。每次每个人会以一定的概率向<br>左边的人和右边的人传球。当所有人都拿到过球之后，最后一个拿到球的人即为<br>胜者。求第N个人获胜的概率。（所有人按照编号逆时针坐成一圈）</p>
-<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>对于n==3的 如果从1开始则只要让下一个往2传则最终一定是3赢 同样如果从2开始则只要让<br>下一个往1传则最终赢得一定是3<br>有了n==3的 我们可以将其他情况都转换成n==3的情况<br>问题如何转换呢？进行合并<br>例如 如果要删掉b b的前一个是a b的后一个是c 令pa、pb、pc分别表示a、b、c往右走的概率<br>则now_pa = (pa<em>pb)/(1-pa</em>(1-pb)) –&gt; 从a往右走到c的概率=从a到b从b到c的概率占除掉<br>从a到b再从b到a的概率的百分比 (因为我要求的是从a到c 所以要除掉再b回头的可能)<br>而1-now_pc = ((1-pc)<em>(1-pb))/(1-pb</em>(1-pc))则跟上同理<br>通过上边的办法可以将2~n-2直接并掉 此时只剩下1,n-1,n<br>对于k==1的情况和k==n-1的情况可以直接同返回you[1], zuo[2];<br>而对于k!=1&amp;&amp;k!=n-1的情况我们可以最后再删k这样我们就可以知道k-&gt;1和k-&gt;n-1的概率然后<br>再乘对应的决策概率再相加</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LDB long double</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Max(x, y) (x &gt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Min(x, y) (x &lt;= y ? x : y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MM(x, y) memset(x, y, sizeof(x))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> F(i, x, y) for(register int i=x; i&lt;=y; i++)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> R(i, x, y) for(register int i=x; i&gt;=y; i--)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">in</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">int</span> ch; <span class="keyword">static</span> <span class="keyword">bool</span> flag;</div><div class="line">    <span class="keyword">for</span>(flag=<span class="literal">false</span>, ch=getchar(); ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>; ch=getchar()) flag |= ch==<span class="string">'-'</span>;</div><div class="line">    <span class="keyword">for</span>(x=<span class="number">0</span>; <span class="built_in">isdigit</span>(ch); ch=getchar()) x = (x&lt;&lt;<span class="number">1</span>) + (x&lt;&lt;<span class="number">3</span>) + ch - <span class="string">'0'</span>;</div><div class="line">    x = flag ? -x : x;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> T, n, k;</div><div class="line">LDB you[<span class="number">105</span>], zuo[<span class="number">105</span>];</div><div class="line"><span class="keyword">int</span> nex[<span class="number">105</span>], pre[<span class="number">105</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">deal</span><span class="params">(<span class="keyword">int</span> b)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> a = pre[b], c = nex[b];</div><div class="line">	LDB pa = you[a], pb = you[b], pc = you[c];</div><div class="line">	you[a] = pa * pb / (<span class="number">1</span> - pa * (<span class="number">1</span>-pb));</div><div class="line">	zuo[a] = <span class="number">1</span> - you[a];</div><div class="line">	zuo[c] = (<span class="number">1</span>-pc)*(<span class="number">1</span>-pb)/(<span class="number">1</span>-pb*(<span class="number">1</span>-pc));</div><div class="line">	you[c] = <span class="number">1</span> - zuo[c];</div><div class="line">	nex[a] = c; pre[c] = a;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> LDB <span class="title">solve</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (n == <span class="number">3</span>) <span class="keyword">return</span> k == <span class="number">1</span> ? you[<span class="number">1</span>] : zuo[<span class="number">2</span>];</div><div class="line">	F(i, <span class="number">1</span>, n) &#123;</div><div class="line">		nex[i] = i+<span class="number">1</span>; pre[i] = i<span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">	nex[n] = <span class="number">1</span>; pre[<span class="number">1</span>] = n;</div><div class="line">	<span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</div><div class="line">		F(i, <span class="number">2</span>, n<span class="number">-2</span>) &#123;</div><div class="line">			deal(i);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> you[<span class="number">1</span>];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (k == n<span class="number">-1</span>) &#123;</div><div class="line">		F(i, <span class="number">2</span>, n<span class="number">-2</span>) &#123;</div><div class="line">			deal(i);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> zuo[n<span class="number">-1</span>];</div><div class="line">	&#125;</div><div class="line">	F(i, <span class="number">2</span>, n<span class="number">-2</span>) <span class="keyword">if</span> (i!=k) deal(i);</div><div class="line">	deal(k);</div><div class="line">	<span class="keyword">return</span> zuo[k]*you[<span class="number">1</span>]+you[k]*zuo[n<span class="number">-1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">work</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	freopen(<span class="string">"it.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>); freopen(<span class="string">"it.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">    in(T);</div><div class="line">    <span class="keyword">while</span>(T--) &#123;</div><div class="line">    	in(n); in(k);</div><div class="line">    	F(i, <span class="number">1</span>, n) &#123;</div><div class="line">    		<span class="keyword">double</span> x;</div><div class="line">    		<span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;x);</div><div class="line">			you[i] = x;</div><div class="line">    		zuo[i] = <span class="number">1</span>-x;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%.9lf\n"</span>, (<span class="keyword">double</span>)solve());</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> TAT = work();</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;;&#125;</div></pre></td></tr></table></figure>
-
+        <h1 id="T1：他"><a href="#T1：他" class="headerlink" title="T1：他"></a>T1：他</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>一张长度为N的纸带，我们可以从左至右编号为0−N（纸带最左端标号为<br>0）。现在有M次操作，每次将纸带沿着某个位置进行折叠，问所有操作之后纸带<br>的长度是多少。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/28/2017-09-28-noip模拟赛9.28考试/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/09/28/2017-09-28-noip模拟赛9.28考试/" data-id="cj85aa5qy001gxs7zhdtn7c07" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/09/28/2017-09-28-noip模拟赛9.28考试/" data-id="cj85ad2pi001gao7z4kc414gc" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noip模拟题/">noip模拟题</a></li></ul>
@@ -233,7 +231,7 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/09/27/2017-09-27-noip模拟题9.27小测试/" data-id="cj85aa5qu001dxs7za5hxqfxn" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/09/27/2017-09-27-noip模拟题9.27小测试/" data-id="cj85ad2pg001dao7zv8o7c4w1" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/noip模拟题/">noip模拟题</a></li></ul>
@@ -288,7 +286,7 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-过度种植/" data-id="cj85aa5qs001cxs7zasva9vjl" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-过度种植/" data-id="cj85ad2pe001cao7zjgkoea7j" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
@@ -343,7 +341,7 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-美国血统/" data-id="cj85aa5qr001axs7zyuxt5dpx" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-美国血统/" data-id="cj85ad2pb001aao7zktnrpa1e" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
@@ -402,7 +400,7 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-刷墙/" data-id="cj85aa5qo0017xs7z7mtwwppg" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-刷墙/" data-id="cj85ad2p80017ao7zjpdwc1ks" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/差分约束/">差分约束</a></li></ul>
@@ -458,7 +456,7 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-出租车拼车/" data-id="cj85aa5ql0013xs7zzge56qt9" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/09/18/2017-09-18-出租车拼车/" data-id="cj85ad2p50015ao7zn9zzp4ef" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li></ul>
@@ -472,9 +470,9 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
 
 
   
-    <article id="post-2017-08-20-树网的核" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2017-08-22-书本整理" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/20/2017-08-20-树网的核/" class="article-date">
+    <a href="/2017/08/20/2017-08-22-书本整理/" class="article-date">
   <time class="post-time" datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">
     <span class="post-month">8月</span><br/>
     <span class="post-day">20</span>
@@ -489,7 +487,7 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/20/2017-08-20-树网的核/">树网的核</a>
+      <a class="article-title" href="/2017/08/20/2017-08-22-书本整理/">书本整理</a>
     </h1>
   
 
@@ -504,19 +502,75 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>设T=(V, E, W) 是一个无圈且连通的无向图（也称为无根树），每条边到有正整数的权，我们称T为树网（treebetwork），其中V，E分别表示结点与边的集合，W表示各边长度的集合，并设T有n个结点。<br>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>Frank是一个非常喜爱整洁的人。他有一大堆书和一个书架，想要把书放在书架上。书架可以放下所有的书，所以Frank首先将书按高度顺序排列在书架上。但是Frank发现，由于很多书的宽度不同，所以书看起来还是非常不整齐。于是他决定从中拿掉k本书，使得书架可以看起来整齐一点。<br>
         
           <p class="article-more-link">
-            <a href="/2017/08/20/2017-08-20-树网的核/#more">Read More</a>
+            <a href="/2017/08/20/2017-08-22-书本整理/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/20/2017-08-20-树网的核/" data-id="cj85aa5q6000txs7zlq8uiauk" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/08/20/2017-08-22-书本整理/" data-id="cj85ad2p30013ao7zwd2m2vp0" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搜索/">搜索</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP，区间DP/">DP，区间DP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-2017-08-20-疫情控制" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/20/2017-08-20-疫情控制/" class="article-date">
+  <time class="post-time" datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">20</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/20/2017-08-20-疫情控制/">疫情控制</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>H 国有 n 个城市，这 n 个城市用 n-1 条双向道路相互连通构成一棵树，1 号城市是首都，也是树中的根节点。</p>
+<p>H 国的首都爆发了一种危害性极高的传染病。当局为了控制疫情，不让疫情扩散到边境城市（叶子节点所表示的城市），决定动用军队在一些城市建立检查点，使得从首都到边境城市的每一条路径上都至少有一个检查点，边境城市也可以建立检查点。但特别要注意的是，首都是不能建立检查点的。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/20/2017-08-20-疫情控制/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://13091291791msy.github.io/2017/08/20/2017-08-20-疫情控制/" data-id="cj85ad2p10011ao7zhbw8ufwj" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分/">二分</a></li></ul>
 
     </footer>
   </div>
@@ -568,65 +622,10 @@ T3：搜索 对于k=1的数据可以直接求解  对于其他数据可以进行
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/20/2017-08-20-采访美术馆 （树形DP）/" data-id="cj85aa5qj0011xs7z6sc96zg1" class="article-share-link">分享</a>
+      <a data-url="https://13091291791msy.github.io/2017/08/20/2017-08-20-采访美术馆 （树形DP）/" data-id="cj85ad2oy000zao7zr9uhaqol" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树形DP/">树形DP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-2017-08-20-过河" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/20/2017-08-20-过河/" class="article-date">
-  <time class="post-time" datetime="2017-08-19T16:00:00.000Z" itemprop="datePublished">
-    <span class="post-month">8月</span><br/>
-    <span class="post-day">20</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/20/2017-08-20-过河/">过河</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>在河上有一座独木桥，一只青蛙想沿着独木桥从河的一侧跳到另一侧。在桥上有一些石子，青蛙很讨厌踩在这些石子上。由于桥的长度和青蛙一次跳过的距离都是正整数，我们可以把独木桥上青蛙可能到达的点看成数轴上的一串整点：0，1，……，L（其中L是桥的长度）。坐标为0的点表示桥的起点，坐标为L的点表示桥的终点。青蛙从桥的起点开始，不停的向终点方向跳跃。一次跳跃的距离是S到T之间的任意正整数（包括S,T）。当青蛙跳到或跳过坐标为L的点时，就算青蛙已经跳出了独木桥。<br>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/20/2017-08-20-过河/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://13091291791msy.github.io/2017/08/20/2017-08-20-过河/" data-id="cj85aa5qf000zxs7zc2x2jemn" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/状压/">状压</a></li></ul>
 
     </footer>
   </div>
